@@ -91,7 +91,14 @@ The most frequently shown ad category across all sessions was `r latest_data %>%
 
 ### Summary
 
-The data suggests that ad exposure varies based on time of day and ad category. These insights can inform further studies on attention span and ad effectiveness based on user behavior patterns.
+This report explores observational data collected on Instagram advertisements during five-minute scrolling sessions. Users were asked to report how many ads they saw, the most common ad category, and the time of day they were scrolling. The two visualisations below summarize the most frequent ad categories observed and the average number of ads seen during different times of the day.
+
+The first chart shows that **Tech/Gadgets** ads were the most commonly reported category, making up nearly half of the responses. This suggests a clear trend in Instagram’s ad targeting, possibly aligned with users' tailored interests or trending tech content. **Fitness/Health** and **Food/Restaurants** also appeared frequently, while **Entertainment** ads were reported the least.
+
+The right chart presents the **average number of ads seen** based on the time of day. **Evening and night sessions** had the **highest average ad exposure**, hovering around 19 ads on average. **Afternoon** scrolling sessions had nearly the same amount, while **morning** sessions had the lowest, with around 17 ads on average. This pattern may be due to ad volume scheduling by Instagram or user engagement patterns throughout the day.
+
+These results suggest both **what** Instagram is promoting most frequently, and **when** users are most shown advertisements. This could better inform future studies into digital marketing strategy, attention research, or even user well-being concerning screen time and targeted content.
+
 
 
 **Inspired by the colorful and chaotic nature of Instagram ads.**
