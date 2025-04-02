@@ -1,0 +1,98 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background: linear-gradient(to bottom right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  color: white;
+  padding: 30px;
+}
+
+h2 {
+  color: white;
+  text-shadow: 1px 1px 2px #00000070;
+  border-bottom: 2px solid white;
+  padding-bottom: 5px;
+  margin-top: 40px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+
+```
+
+## What Kind of Ads Are We Seeing on Instagram and What Patterns Can We Concur From Them?
+
+This dynamic report will present insights based on observational data collected from Instagram scrolling sessions that have been done in 5 mintute intervals. The user will record the number of ads they see, the most common ad category, and what time of day they were scrolling.
+
+
+
+```{r}
+library(tidyverse)
+
+# Read and clean data
+
+latest_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQoCQHaq2daCo0bYJ6NV3gSLRTd6suzq3LDb-eBpZJ7eSfG9Mnrrqvh7TMlpzm8OXXml-5sbFIMun1S/pub?output=csv") %>%
+  rename(
+    ad_count = `How many ads did you see during this scrolling session?`,
+    ad_category = `What was the most common ad category shown?`,
+    time_of_day = `What time of day were you scrolling?`
+  ) %>%
+  mutate(ad_count = as.numeric(ad_count))
+
+# Summary statistics
+
+mean_ads <- mean(latest_data$ad_count, na.rm = TRUE)
+max_ads <- max(latest_data$ad_count, na.rm = TRUE)
+
+
+
+
+```
+
+On average, we saw `r round(mean_ads, 1)` ads during a scrolling session.  
+The highest number of ads seen in a single session was `r max_ads`.
+
+```{r}
+# Bar Chart 1 - Frequency of Ad Category
+
+ggplot(latest_data, aes(x = ad_category)) +
+  geom_bar(fill = "skyblue") +
+  labs(title = "Most Common Ad Categories", x = "Ad Category", y = "Count") +
+  theme_minimal()
+
+# Bar Chart 2 - Average Ads by Time of Day
+
+latest_data %>%
+  group_by(time_of_day) %>%
+  summarise(avg_ads = mean(ad_count, na.rm = TRUE)) %>%
+  ggplot(aes(x = time_of_day, y = avg_ads)) +
+  geom_col(fill = "coral") +
+  labs(title = "Average Ads Seen by Time of Day", x = "Time of Day", y = "Average Ads") +
+  theme_minimal()
+
+
+```
+
+
+The most frequently shown ad category across all sessions was `r latest_data %>% count(ad_category) %>% arrange(desc(n)) %>% slice(1) %>% pull(ad_category)`, which appeared `r latest_data %>% count(ad_category) %>% arrange(desc(n)) %>% slice(1) %>% pull(n)` times in the dataset.
+
+
+### Summary
+
+The data suggests that ad exposure varies based on time of day and ad category. These insights can inform further studies on attention span and ad effectiveness based on user behavior patterns.
+
+
+**Inspired by the colorful and chaotic nature of Instagram ads.**
+
