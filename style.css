@@ -1,0 +1,49 @@
+
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #fafafa;
+  color: #262626;
+  line-height: 1.6;
+  padding: 2em;
+}
+
+h1, h2, h3 {
+  color: #e1306c; /* Instagram pink */
+}
+
+a {
+  color: #833AB4; /* Instagram purple */
+}
+
+code {
+  background-color: #f2f2f2;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+img {
+  border: 2px solid #e1306c;
+  border-radius: 8px;
+  margin: 1em 0;
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  border-top: 1px solid #ddd;
+  margin: 2em 0;
+}
+
+.caption {
+  font-style: italic;
+  font-size: 0.9em;
+  color: #999;
+  text-align: center;
+}
+
+.plot-title {
+  color: #fd7e14;
+  font-weight: bold;
+  margin-top: 1.5em;
+}
